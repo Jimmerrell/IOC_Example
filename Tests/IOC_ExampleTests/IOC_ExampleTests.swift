@@ -1,15 +1,22 @@
 import XCTest
 @testable import IOC_Example
 
-final class IOC_ExampleTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(IOC_Example().text, "Hello, World!")
+final class IOC_ExampleTests: XCTestCase
+{
+    func testInit()
+    {
+        let example_IOC = IOC_Example();
+        XCTAssert(example_IOC.centralFactory.exampleObjectFactory != nil);
+    }
+    
+    func testPopulateObjectContainer()
+    {
+        let example_IOC = IOC_Example();
+        let numberOfObects = 42;
+        
+        example_IOC.populateObjectContainer(numberOfObjects: numberOfObects);
+        
+        XCTAssertTrue(example_IOC.exampleObjects.count == numberOfObects);        
     }
 
-    static var allTests = [
-        ("testExample", testExample),
-    ]
 }
